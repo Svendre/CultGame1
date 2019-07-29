@@ -17,6 +17,9 @@ namespace CharSys
         private string _name = NameGenerator.GetFullName();
         private float _age;
         private Action _doingAction = new MoveTo(new Vector2(00F, -1F));
+        private Task _currentTask = null;
+        private Job _currentJob = null;
+        private Inventory _inventory = new Inventory();
         private Body _body;
         private Mind _mind;
         private List<Skill> _skills = Skill.GenerateDefaultSkills();

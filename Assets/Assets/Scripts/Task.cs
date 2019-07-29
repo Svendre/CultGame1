@@ -39,4 +39,12 @@ namespace Assets.Assets.Scripts
         }
     }
 
+    public class HarvestAppletree : Task
+    {
+        public override Action ActionDecider(Action currentAction)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+
 }
