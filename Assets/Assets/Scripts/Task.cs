@@ -1,14 +1,15 @@
-﻿using System;
+﻿//using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Behavior;
 
 namespace Assets.Assets.Scripts
 {
     public abstract class Task
     {
-        public abstract Action ActionDesider(Action currentAction);
+        public abstract Action ActionDecider(Action currentAction);
     }
 
     public class BuildWall : Task
@@ -21,20 +22,20 @@ namespace Assets.Assets.Scripts
             _wallToBuild = wall;
         }
 
-        public override Action ActionDesider(Action currentAction)
+        public override Action ActionDecider(Action currentAction)
         {
             if(_orderedAction == null)
             {
                 _orderedAction = InitialDecider();
                 return _orderedAction;
             }
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
 
         public Action InitialDecider()
         {
             
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
     }
 

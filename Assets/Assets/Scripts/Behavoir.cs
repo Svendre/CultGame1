@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CharSys;
 
-namespace Behavoir
+namespace Behavior
 {
     public class TreeNode
     {
