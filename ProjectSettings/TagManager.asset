@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - GlobalResources
+  - AppleToMoneyBox
   layers:
   - Default
   - TransparentFX

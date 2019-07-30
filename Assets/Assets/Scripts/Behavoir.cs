@@ -21,7 +21,7 @@ namespace Behavior
 
     public abstract class Action
     {
-        public abstract ActionResult Run(NPC me);
+        public abstract ActionResult Run(NPC me, Task currentTask);
     }
 
     /// <summary>
@@ -35,7 +35,7 @@ namespace Behavior
             _position = position;
         }
 
-        public override ActionResult Run(NPC me)
+        public override ActionResult Run(NPC me, Task currentTask)
         {
             Vector3 deltaPos = new Vector3(_position.x - me.transform.position.x, 0, _position.y - me.transform.position.z);
             float distaceMoved = Time.deltaTime * me.Speed;

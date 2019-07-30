@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Assets.Scripts
-{
     public struct Item 
     {
         public static IItemComparer Comparer = new IItemComparer();
@@ -43,5 +41,3 @@ namespace Assets.Assets.Scripts
         }
     }
 
-
-}

@@ -5,36 +5,33 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Assets.Scripts
+public abstract class Build 
 {
-    public abstract class Build 
+    protected GameObject _gameObject;
+    protected Inventory _itemsInBuild = new Inventory();
+    protected Inventory _itemsNeeded;
+
+    public Build(Inventory itemsNeeded)
     {
-        protected GameObject _gameObject;
-        protected Inventory _itemsInBuild = new Inventory();
-        protected Inventory _itemsNeeded;
-
-        public Build(Inventory itemsNeeded)
-        {
-            _itemsNeeded = itemsNeeded;
-        }
-
-        public Inventory ItemsLeftToStartConstruction()
-        {
-            return _itemsNeeded - _itemsInBuild;
-        }
-
+        _itemsNeeded = itemsNeeded;
     }
 
-    public class WallBuild : Build
+    public Inventory ItemsLeftToStartConstruction()
     {
-        public static readonly int WALL_BUILD_AMOUNT = 20;
+        return _itemsNeeded - _itemsInBuild;
+    }
 
-        Item.Types wallType;
+}
+
+public class WallBuild : Build
+{
+    public static readonly int WALL_BUILD_AMOUNT = 20;
+
+    Item.Types wallType;
         
 
-        public WallBuild(Item.Types itemType): base(new Inventory(new[] { new Item (itemType, WALL_BUILD_AMOUNT ) }))
-        {
-            wallType = itemType;
-        }
+    public WallBuild(Item.Types itemType): base(new Inventory(new[] { new Item (itemType, WALL_BUILD_AMOUNT ) }))
+    {
+        wallType = itemType;
     }
 }

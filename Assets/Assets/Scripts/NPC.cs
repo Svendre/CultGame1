@@ -18,7 +18,7 @@ namespace CharSys
         private float _age;
         private Action _doingAction = new MoveTo(new Vector2(00F, -1F));
         private Task _currentTask = null;
-        private Job _currentJob = null;
+        //private Job _currentJob = null;
         private Inventory _inventory = new Inventory();
         private Body _body;
         private Mind _mind;
@@ -37,7 +37,7 @@ namespace CharSys
         // Use this for initialization
         void Start()
         {
-
+            
         }
 
         // Update is called once per frame
@@ -46,19 +46,39 @@ namespace CharSys
             if (Input.GetKeyDown(KeyCode.A)){
                 Debug.Log($"Speed " + Speed);
             }
-            if (_doingAction == null) return;
-            switch (_doingAction.Run(this))
+            if(_currentTask != null)
+            {
+                UpdateTask();
+            }
+            while (_doingAction == null) return;
+            
+        }
+
+        private void UpdateTask()
+        {
+            ActionResult result = ActionResult.Success;
+            while(result != ActionResult.Running)
+            {
+
+            }
+        }
+
+        private ActionResult PreformAction()
+        {
+            switch (_doingAction.Run(this, _currentTask))
             {
                 case ActionResult.Success:
-                    Debug.Log("Dave completed action successfuly");
+                    Debug.Log($"{_name} completed action successfuly");
                     _doingAction = null;
-                    break;
+                    return ActionResult.Success;
                 case ActionResult.Running:
-                    break;
+                    return ActionResult.Running; 
                 case ActionResult.Failed:
-                    Debug.Log("Dave failed action");
+                    Debug.Log($"{_name} failed action");
                     _doingAction = null;
-                    break;
+                    return ActionResult.Failed;
+                default:
+                    throw new System.Exception("fuck sadad");
             }
         }
     }

@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Assets.Scripts
-{
     public class Inventory
     {
         private SortedSet<Item> _items = new SortedSet<Item>(Item.Comparer);
@@ -98,4 +96,3 @@ namespace Assets.Assets.Scripts
         }
 
     }
-}
